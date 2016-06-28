@@ -32,7 +32,8 @@ var webpackConfig = {
         loader: 'babel',
         query: {
           cacheDirectory: true,
-          compact: false
+          compact: false,
+          presets:['es2015', 'react']
         },
         exclude: [/node_modules/]
       },
@@ -51,7 +52,7 @@ var webpackConfig = {
       __DEV__: !!JSON.parse(process.env.BUILD_DEV || '0'),
       __PRODUCTION__: !!JSON.parse(process.env.BUILD_PRODUCTION || '0')
     }),
-    new ExtractTextPlugin('../css/[name].min.css')
+    new ExtractTextPlugin('../client/[name].min.css')
   ],
   postcss: function(webpack) {
     return [
