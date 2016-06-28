@@ -7,11 +7,9 @@ import React, { Component, PropTypes } from 'react';
 
 class Modal extends Component {
 
-  bodyElement: null,
-
   stopPropagation( event ) {
     event.stopPropagation();
-  },
+  }
 
   renderHeader() {
 
@@ -48,7 +46,7 @@ class Modal extends Component {
     }
 
     return null;
-  },
+  }
 
   renderModalBody() {
 
@@ -76,7 +74,7 @@ class Modal extends Component {
     // }
 
     return null;
-  },
+  }
 
   renderModalContent() {
     const {
@@ -124,7 +122,7 @@ class Modal extends Component {
     }
 
     return null;
-  },
+  }
 
   render() {
 
@@ -165,7 +163,9 @@ class Modal extends Component {
       </div>
     );
   }
-});
+};
+
+Modal.bodyElement = null;
 
 function select( newState ) {
   return {

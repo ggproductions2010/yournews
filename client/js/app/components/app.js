@@ -1,7 +1,6 @@
 var RouteHandler  = require( 'react-router' ).RouteHandler,
-    Header        = require( './header/header' ),
+    Header        = require( './header' ),
     Modal         = require( './modal' ),
-    downloadActions = require( '../actions/download' ),
     classNames = require('classnames'),
     { connect } = require('react-redux'),
     { routeActions } = require('react-router-redux'),
@@ -22,7 +21,7 @@ class App extends Component {
     if ( this.props.routing.location.pathname === "/" ) {
       dispatch(routeActions.push('/home'));            
     }
-  },
+  }
 
   render() {
     var pathname = this.props.routing.location.pathname;

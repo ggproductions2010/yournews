@@ -70,7 +70,7 @@ class Loading extends Component {
 
     var loadingIcon = this.refs.loadingIcon;
     loadingIcon.appendChild( svgWrap );
-  },
+  }
 
   render() {
 

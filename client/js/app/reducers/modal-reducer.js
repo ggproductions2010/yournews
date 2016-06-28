@@ -1,4 +1,4 @@
-var modalActions = require( '../actions/modal' )
+var modalActions = require( '../actions/modal-actions' )
 ;
 
 function initialModalState() {

@@ -20,7 +20,7 @@ var React = require( 'react' ),
     config = require('../config/js-config')
 ;
 
-// Sets up the main scss file via webpack
+// Sets up the main css file via webpack
 require('../../css/root.css');
 
 // Sets up tooltip
@@ -74,7 +74,7 @@ var createStoreWithMiddleware = compose(
 // Creates and sets up the store
 var store = createStoreWithMiddleware( rootReducer );
 reduxRouterMiddleware.listenForReplays( store );
-store.dispatch(actions.requestInitialData());
+// store.dispatch(actions.requestInitialData());
 
 var APP_SELECTOR = '#app';
 

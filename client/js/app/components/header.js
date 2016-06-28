@@ -6,7 +6,7 @@ import React, { Component, PropTypes } from 'react';
 
 class Header extends Component {
 
-  render: function () {
+  render() {
 
     return (
       <div className="header">
