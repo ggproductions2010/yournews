@@ -7,7 +7,11 @@
     "dev": "BUILD_DEV=1 webpack --progress --colors --watch --config config/webpack.config",
     "prod": "webpack --progress --colors --config config/webpack.production.config.js"
   },
-  "author": "",
+  "repository" : { "type" : "git", "url" : "https://github.com/yournews/yournews.git" },
+  "authors": [
+    "Derrick Chie <djchie.dev@gmail.com> (https://github.com/djchie)",
+    "Eric Kennedy <ekeric13@gmail.com> (https://github.com/ekeric13)"
+  ],
   "license": "Apache-2.0",
   "devDependencies": {
     "autoprefixer": "^6.3.1",
