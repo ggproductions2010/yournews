@@ -63,6 +63,7 @@
     "webpack": "^1.12.14"
   },
   "dependencies": {
-    "koa": "^2.0.0-alpha.3"
+    "koa": "^2.0.0-alpha.3",
+    "koa-static": "^2.0.0"
   }
 }
