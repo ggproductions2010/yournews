@@ -43,6 +43,7 @@ if (!window.console.dir) window.console.dir = function () { };
 var history = useRouterHistory( createHashHistory )({
   queryKey: false
 });
+
 var reduxRouterMiddleware = syncHistory( history );
 
 var middlewares = [
