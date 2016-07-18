@@ -1,28 +1,23 @@
-// Development config file for webpack
+// Production config file for webpack
+// Overwrites the development parts of the development config file
 
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CompressionPlugin = require('compression-webpack-plugin');
+var webpackConfig = require('./webpack.config');
 var autoprefixer = require('autoprefixer');
 var postcssCachify = require('postcss-cachify');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var precss = require('precss');
-var postcssImport = require('postcss-import');
 
 var cssLoaders = [
   'css-loader',
   'postcss-loader'
 ];
 
-var webpackConfig = {
+Object.assign(webpackConfig, {
+  cacheDirectory: false,
   devtool: undefined,
-  entry: {
-    app: './client/js/app/root.js',
-  },
-  resolve: {
-    root: ['./node_modules'],
-    extensions: ['', '.js', '.css']
-  },
   output: {
-    path: './client',
+    path: '../static/js',
     filename: '[name].min.js'
   },
   module: {
@@ -31,9 +26,8 @@ var webpackConfig = {
         test: /\.js?$/,
         loader: 'babel',
         query: {
-          cacheDirectory: true,
-          compact: false,
-          presets:['es2015', 'react']
+          cacheDirectory: false,
+          compact: false
         },
         exclude: [/node_modules/]
       },
@@ -49,23 +43,28 @@ var webpackConfig = {
   },
   plugins: [
     new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      },
       __DEV__: !!JSON.parse(process.env.BUILD_DEV || '0'),
       __PRODUCTION__: !!JSON.parse(process.env.BUILD_PRODUCTION || '0')
     }),
-    new ExtractTextPlugin('../client/[name].min.css')
-  ],
-  postcss: function(webpack) {
-    return [
-      postcssImport({ addDependencyTo: webpack }),
-      precss,
-      autoprefixer({
-        browsers: ['> 1%', 'ie 9', 'ie 10']
-      }),
-      postcssCachify({
-        baseUrl: "/res"
-      })
-    ]
-  } 
-};
+    new ExtractTextPlugin('../css/[name].min.css'),
+    new webpack.optimize.UglifyJsPlugin({
+      comments: false,
+      compress: {
+        warnings: false
+      },
+      mangle: true
+    }),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new CompressionPlugin({
+      // asset: "[name].gz",
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.map$/,
+      minRatio: 1.5
+    })
+  ]
+});
 
 module.exports = webpackConfig;
