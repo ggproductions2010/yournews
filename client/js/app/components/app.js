@@ -1,6 +1,4 @@
 var RouteHandler  = require( 'react-router' ).RouteHandler,
-    Header        = require( './header' ),
-    Modal         = require( './modal' ),
     classNames = require('classnames'),
     { connect } = require('react-redux'),
     { routeActions } = require('react-router-redux'),
@@ -9,6 +7,8 @@ var RouteHandler  = require( 'react-router' ).RouteHandler,
     DragDropContext = require('react-dnd').DragDropContext
 ;
 import React, { Component, PropTypes } from 'react';
+import Header from './header';
+import Modal from './modal';
 
 // depends Header, Nav
 class App extends Component {
