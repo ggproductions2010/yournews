@@ -1,20 +1,16 @@
 import Koa from 'koa';
+import route from 'koa-route';
 import serve from 'koa-static';
 
-import parseHackerNews from './parser/hacker-news-parser';
+import parsers from './controllers/parsers'
 
 const server = new Koa();
 const port = process.env.PORT || 3000;
 
-// Response
-server.use(async (ctx, next) => {
-  let items = await parseHackerNews();
-  ctx.body = {
-    items: items,
-  }
-});
-
 server.use(serve('client/'))
+
+server.use(route.get('/hacker-news/', parsers.hackerNews));
+server.use(route.get('/designer-news/', parsers.designerNews));
 
 server.listen(port, () => console.log('Server started on port ', port));
 
