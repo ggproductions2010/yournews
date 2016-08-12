@@ -15,6 +15,21 @@ const designerNews = function* (next) {
   this.body = yield parseDesignerNews()
 };
 
+// Async Await
+// const hackerNews = async function (next) {
+//   if ('GET' != this.method) {
+//     return await next;
+//   }
+//   this.body = await parseHackerNews()
+// };
+
+// const designerNews = async function (next) {
+//   if ('GET' != this.method) {
+//     return await next;
+//   }
+//   this.body = await parseDesignerNews()
+// };
+
 module.exports.hackerNews = hackerNews;
 
 module.exports.designerNews = designerNews;
