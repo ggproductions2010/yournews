@@ -33,7 +33,7 @@ var webpackConfig = {
         query: {
           cacheDirectory: true,
           compact: false,
-          presets:['es2015', 'react', 'stage-0']
+          presets:['es2015', 'es2016', 'react', 'stage-0']
         },
         exclude: [/node_modules/]
       },
