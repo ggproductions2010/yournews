@@ -14,9 +14,6 @@ var React = require( 'react' ),
     thunk = require( 'redux-thunk' ),
     rootReducer = require( './reducers' ),
 
-    // For Google and Mixpanel Analytics
-    analyticsMiddleware = require( './middlewares/analytics-middleware' ),
-
     config = require('../config/js-config')
 ;
 
@@ -78,6 +75,14 @@ reduxRouterMiddleware.listenForReplays( store );
 // store.dispatch(actions.requestInitialData());
 
 var APP_SELECTOR = '#app';
+
+
+/*
+  land on page
+  look into cookies to see what their choices for news sites are
+  if choices in cookies, store in news-store and make requests for those sites
+  if not set defaults as in news-store, and then make an api call for that source
+*/
 
 ReactDOM.render(
   (
